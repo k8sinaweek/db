@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+  mongodb:
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_DATABASE: k8sinaweek
+    image: mongo:4.2.2
+    networks:
+      - k8sinaweek
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./init_data.js:/docker-entrypoint-initdb.d/init_data.js
+    
+networks:
+  k8sinaweek:
+    name: k8sinaweek
